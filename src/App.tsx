@@ -43,12 +43,16 @@ function App() {
     const deviceCaps = getDeviceCapabilities(device);
     const { capabilities: streamCaps, settings, stream } = await getStreamCapabilities(device.deviceId);
     
-    setCapabilities({
+    const data: DeviceCapabilitiesData = {
       deviceCapabilities: deviceCaps,
       streamCapabilities: streamCaps,
       currentSettings: settings,
       stream
-    });
+    };
+
+    setCapabilities(data);
+
+    console.log(data)
     
     setLoading(false);
   };
