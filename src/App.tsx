@@ -58,10 +58,14 @@ function App() {
     setCapabilities(data);
 
     console.log(JSON.stringify(device));
-    console.log("device capabilities", JSON.stringify(deviceCaps));
-    console.log("stream capabilities", JSON.stringify(streamCaps));
-    console.log("current settings", JSON.stringify(settings));
-    console.log("stream", JSON.stringify(stream));
+    console.log("device capabilities:");
+    console.log(JSON.stringify(deviceCaps))
+    console.log("stream capabilities");
+    console.log(JSON.stringify(streamCaps));
+    console.log("current settings");
+    console.log(JSON.stringify(settings));
+    console.log("stream");
+    console.log(JSON.stringify(stream));
 
     setLoading(false);
   };
