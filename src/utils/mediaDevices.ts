@@ -1,4 +1,4 @@
-import { VideoDevice } from '../types/media';
+import { VideoDevice } from "../types/media";
 
 export async function requestVideoPermission() {
   try {
@@ -6,7 +6,7 @@ export async function requestVideoPermission() {
     stream.getTracks().forEach((track) => track.stop());
     return true;
   } catch (error) {
-    console.error('Error requesting video permission:', error);
+    console.error("Error requesting video permission:", error);
     return false;
   }
 }
@@ -15,10 +15,10 @@ export async function getVideoDevices(): Promise<VideoDevice[]> {
   try {
     const devices = await navigator.mediaDevices.enumerateDevices();
     return devices.filter(
-      (device) => device.kind === 'videoinput'
+      (device) => device.kind === "videoinput"
     ) as VideoDevice[];
   } catch (error) {
-    console.error('Error enumerating devices:', error);
+    console.error("Error enumerating devices:", error);
     return [];
   }
 }
@@ -29,7 +29,7 @@ export function getDeviceCapabilities(
   try {
     return device.getCapabilities();
   } catch (error) {
-    console.error('Error getting device capabilities:', error);
+    console.error("Error getting device capabilities:", error);
     return null;
   }
 }
@@ -41,7 +41,7 @@ export async function getStreamCapabilities(deviceId: string): Promise<{
 }> {
   try {
     const stream = await navigator.mediaDevices.getUserMedia({
-      video: { deviceId: { exact: deviceId } },
+      video: { deviceId: { exact: deviceId }, width: 1920, height: 1080 },
     });
 
     const videoTrack = stream.getVideoTracks()[0];
@@ -54,7 +54,7 @@ export async function getStreamCapabilities(deviceId: string): Promise<{
       stream,
     };
   } catch (error) {
-    console.error('Error getting stream capabilities:', error);
+    console.error("Error getting stream capabilities:", error);
     return {
       capabilities: null,
       settings: null,
@@ -82,7 +82,7 @@ export async function toggleTorch(
     });
     return true;
   } catch (error) {
-    console.error('Error toggling torch:', error);
+    console.error("Error toggling torch:", error);
     return false;
   }
 }
