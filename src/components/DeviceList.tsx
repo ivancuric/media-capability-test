@@ -26,11 +26,11 @@ export function DeviceList({ devices, selectedDevice, onDeviceSelect }: DeviceLi
                   : 'border-gray-200 hover:bg-gray-50'
               }`}
             >
-              <Camera className="w-5 h-5 mr-2 text-gray-600" />
-              <span className="text-left">
+              <Camera className="w-5 h-5 mr-2 text-gray-600 shrink-0" />
+              <div className="text-left overflow-hidden">
                 <div className="font-medium">{device.label || 'Unnamed Device'}</div>
-                <div className="text-sm text-gray-500">{device.deviceId}</div>
-              </span>
+                <div className="text-sm text-gray-500 truncate">{device.deviceId}</div>
+              </div>
             </button>
           ))}
         </div>
